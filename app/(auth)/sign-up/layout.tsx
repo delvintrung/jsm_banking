@@ -3,5 +3,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>SIGN - UP</main>;
+  return <main>{children}</main>;
 }

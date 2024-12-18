@@ -3,5 +3,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <main>SIGN - IN</main>;
+  return <main>{children}</main>;
 }
