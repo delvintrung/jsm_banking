@@ -200,7 +200,8 @@ export const AuthSchema = (type: string) =>
     // sign - up
     firstName: type === "sign-up" ? z.string().optional() : z.string().min(2),
     lastName: type === "sign-up" ? z.string().optional() : z.string().min(2),
-    address: type === "sign-up" ? z.string().optional() : z.string().max(50),
+    address1: type === "sign-up" ? z.string().optional() : z.string().max(50),
+    city: type === "sign-up" ? z.string().optional() : z.string().max(50),
     state: type === "sign-up" ? z.string().optional() : z.string().min(2),
     postalCode:
       type === "sign-up" ? z.string().optional() : z.string().min(5).max(5),

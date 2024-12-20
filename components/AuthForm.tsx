@@ -12,6 +12,7 @@ import { Form } from "@/components/ui/form";
 import CustomInput from "./CustomInput";
 import { Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { signIn, signUp } from "@/lib/actions/user.action";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setuser] = useState(null);
@@ -28,18 +29,18 @@ const AuthForm = ({ type }: { type: string }) => {
 
     try {
       if (type === "sign-in") {
-        // const response = await signIn({
-        //   email: data.email,
-        //   password: data.password,
-        // })
-        // if (response) {
-        //   router.push('/')
-        // }
+        const response = await signIn({
+          email: data.email,
+          password: data.password,
+        });
+        if (response) {
+          router.push("/");
+        }
       } else {
-        // const newUser = await signUp(data)
-        // if (newUser) {
-        //   setuser(newUser)
-        // }
+        const newUser = await signUp(data);
+        if (newUser) {
+          setuser(newUser);
+        }
       }
     } catch (error) {
       console.log(error);
@@ -96,9 +97,16 @@ const AuthForm = ({ type }: { type: string }) => {
 
                   <CustomInput
                     control={form.control}
-                    name="address"
+                    name="address1"
                     label="Address"
                     placeholder="Enter your specific address"
+                  />
+
+                  <CustomInput
+                    control={form.control}
+                    name="city"
+                    label="City"
+                    placeholder="Enter your city"
                   />
 
                   <div className="flex gap-4">
